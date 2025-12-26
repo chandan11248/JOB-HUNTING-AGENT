@@ -79,6 +79,35 @@ The bot needs two Google permissions to function fully:
 
 ---
 
+## 🐳 Docker Deployment
+
+The project includes a production-ready Docker setup with resource limits and local data persistence.
+
+### 1. Get Started
+Run the bot in a detached container:
+```bash
+docker-compose up -d --build
+```
+
+### 2. Live Logs
+Monitor the bot's activity in real-time:
+```bash
+docker-compose logs -f
+```
+
+### 3. Resource Utilization
+The container is configured with the following resource constraints to ensure stability on modest VPS hosts:
+- **Memory Request**: 256MB (Min)
+- **Memory Limit**: 512MB (Max)
+- **CPU Limit**: 50% of 1 core
+
+### 4. Volumes & Persistence
+- `./data` -> `/app/data`: Persists logs and bot state.
+- `./service_account.json`: Mounted read-only for Google Auth.
+- `./.env`: Mounted read-only for configuration.
+
+---
+
 ## 🎮 Commands & Usage
 
 | Command | Action |
