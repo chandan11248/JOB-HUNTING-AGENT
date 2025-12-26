@@ -16,7 +16,6 @@ env/
 
 # Data and Artifacts
 data/
-*.pdf
 *.log
 
 # OS Metadata
