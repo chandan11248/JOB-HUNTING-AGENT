@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  job-bot:
+    build: .
+    container_name: langgraph_job_bot
+    restart: unless-stopped
+    volumes:
+      # Persist the data directory (logs, state)
+      - ./data:/app/data
+      # Mount credentials securely (read-only)
+      - ./service_account.json:/app/service_account.json:ro
+      # Mount .env file
+      - ./.env:/app/.env:ro
+      # Mount assets for local testing/docs (optional)
+      - ./assets:/app/assets
+    environment:
+      - PYTHONUNBUFFERED=1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 256M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

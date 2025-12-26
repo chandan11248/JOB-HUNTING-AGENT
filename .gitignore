@@ -1,0 +1,28 @@
+# Security: Environmental and Credential files
+.env
+service_account.json
+*.json
+!package.json
+!tsconfig.json
+# (Allow necessary config jsons if any, but block credential ones)
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# Data and Artifacts
+data/
+*.pdf
+*.log
+
+# OS Metadata
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
